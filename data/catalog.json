@@ -1,0 +1,83 @@
+{
+  "settings": {
+    "startHour": 8,
+    "endHour": 22
+  },
+  "districts": [
+    { "slug": "center", "name": "Центр" },
+    { "slug": "south", "name": "Юг" },
+    { "slug": "north", "name": "Север" },
+    { "slug": "west", "name": "Запад" },
+    { "slug": "east", "name": "Восток" }
+  ],
+  "sports": [
+    { "slug": "football", "name": "Футбол" },
+    { "slug": "basketball", "name": "Баскетбол" },
+    { "slug": "tennis", "name": "Теннис" },
+    { "slug": "volleyball", "name": "Волейбол" },
+    { "slug": "running", "name": "Бег" },
+    { "slug": "hockey", "name": "Хоккей" }
+  ],
+  "venues": [
+    {
+      "id": "v1",
+      "name": "Арена Тверская",
+      "address": "ул. Тверская, 10",
+      "districtSlug": "center",
+      "sportSlugs": ["football", "running"],
+      "description": "Открытая многофункциональная площадка рядом с метро.",
+      "capacity": 50,
+      "pricePerHour": 1400
+    },
+    {
+      "id": "v2",
+      "name": "Баскет Холл Центр",
+      "address": "Комсомольский проспект, 3",
+      "districtSlug": "center",
+      "sportSlugs": ["basketball", "volleyball"],
+      "description": "Зал с современным покрытием и трибунами.",
+      "capacity": 40,
+      "pricePerHour": 1700
+    },
+    {
+      "id": "v3",
+      "name": "Южный Спорт Парк",
+      "address": "ул. Красная, 25",
+      "districtSlug": "south",
+      "sportSlugs": ["football", "tennis"],
+      "description": "Большая территория с вечерним освещением.",
+      "capacity": 60,
+      "pricePerHour": 1300
+    },
+    {
+      "id": "v4",
+      "name": "Север Трек",
+      "address": "ул. Беговая, 22",
+      "districtSlug": "north",
+      "sportSlugs": ["running", "football"],
+      "description": "Площадка для интервальных тренировок и мини-матчей.",
+      "capacity": 35,
+      "pricePerHour": 1100
+    },
+    {
+      "id": "v5",
+      "name": "Запад Корт",
+      "address": "ул. Лесная, 4",
+      "districtSlug": "west",
+      "sportSlugs": ["tennis", "volleyball"],
+      "description": "Крытые корты с системой онлайн-табло.",
+      "capacity": 24,
+      "pricePerHour": 1900
+    },
+    {
+      "id": "v6",
+      "name": "Лед Восток",
+      "address": "пр. Революции, 3",
+      "districtSlug": "east",
+      "sportSlugs": ["hockey"],
+      "description": "Ледовая арена для тренировок и любительских лиг.",
+      "capacity": 30,
+      "pricePerHour": 2200
+    }
+  ]
+}
