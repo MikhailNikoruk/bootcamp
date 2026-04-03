@@ -1,34 +1,35 @@
-# bootcamp
+# SpotFit MVP
 
-Статическое веб-приложение для бронирования спортивных площадок, готовое к публикации на GitHub Pages.
+Минималистичный статический MVP для просмотра загруженности спортивных площадок.
 
-## Что сделано
-- Данные каталога вынесены из кода в [`frontend/public/data/catalog.json`](/Users/mikhailnikoruk/work/bootcamp/bootcamp1/frontend/public/data/catalog.json).
-- Пользователь может добавлять новые площадки через UI (сохраняются в `localStorage`).
-- Добавлен переключатель темы (светлая/темная).
-- Улучшена адаптивная верстка для телефонов.
-- Добавлены базовые тесты для логики бронирования.
+## Функции
+- Welcome page.
+- Пошаговый UX: выбор спорта → выбор площадки → детали площадки.
+- Цветовая индикация загруженности: пусто / средняя / много людей.
+- Небольшие диаграммы загруженности по площадкам.
+- Переключение светлой/темной темы.
+- Адаптивная верстка для мобильных экранов.
+
+## Данные
+Все данные захардкожены в:
+- `frontend/src/data/mvpData.ts`
 
 ## Локальный запуск
 ```bash
-cd frontend
 npm install
 npm run dev
 ```
 
 ## Тесты
 ```bash
-cd frontend
 npm run test
 ```
 
 ## Сборка
 ```bash
-cd frontend
 npm run build
 ```
 
 ## GitHub Pages
-В `frontend/vite.config.ts` уже указан `base: "/bootcamp/"`.
-После публикации репозитория `MikhailNikoruk/bootcamp` сайт будет доступен по адресу:
-`https://mikhailnikoruk.github.io/bootcamp/`
+Сайт публикуется из корня репозитория (собранный `frontend/dist` копируется в корень).
+URL: `https://mikhailnikoruk.github.io/bootcamp/`

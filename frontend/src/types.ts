@@ -1,47 +1,26 @@
 export type Theme = "light" | "dark";
 
-export type District = {
-  slug: string;
-  name: string;
-};
-
 export type Sport = {
-  slug: string;
+  id: string;
   name: string;
+  icon: string;
+  description: string;
 };
 
 export type Venue = {
   id: string;
   name: string;
-  address: string;
-  districtSlug: string;
-  sportSlugs: string[];
-  description: string;
-  capacity: number;
-  pricePerHour: number;
-};
-
-export type Catalog = {
-  settings: {
-    startHour: number;
-    endHour: number;
-  };
-  districts: District[];
-  sports: Sport[];
-  venues: Venue[];
-};
-
-export type Booking = {
-  id: string;
-  venueId: string;
-  date: string;
-  time: string;
-  createdAt: string;
-  status: "CONFIRMED" | "CANCELED";
-};
-
-export type VenueFilters = {
   district: string;
-  sport: string;
-  query: string;
+  sports: string[];
+  occupancyNow: number;
+  capacity: number;
+  trend: number[];
+  qualityScore: number;
+  address: string;
+};
+
+export type SelectionState = {
+  sportId: string;
+  district: string;
+  venueId: string;
 };
