@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { filterVenuesForStep, formatPercent, getOccupancyLevel } from "./mvp";
+import { districts, sports, venues } from "../data/mvpData";
 
 describe("mvp utils", () => {
   it("calculates occupancy level", () => {
@@ -22,5 +23,16 @@ describe("mvp utils", () => {
   it("formats occupancy to percent", () => {
     expect(formatPercent(5, 20)).toBe(25);
     expect(formatPercent(20, 20)).toBe(100);
+  });
+
+  it("has at least one venue for each sport in each district", () => {
+    for (const district of districts) {
+      for (const sport of sports) {
+        const exists = venues.some(
+          (venue) => venue.district === district && venue.sports.includes(sport.id),
+        );
+        expect(exists).toBe(true);
+      }
+    }
   });
 });

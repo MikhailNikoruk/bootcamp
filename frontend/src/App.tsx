@@ -19,6 +19,13 @@ function occupancyClass(venue: Venue): string {
   return `status-${level}`;
 }
 
+function trendHeightPercent(trend: number[], index: number): number {
+  const value = trend[index] ?? 0;
+  const max = Math.max(...trend, 1);
+  const ratio = value / max;
+  return Math.max(20, Math.round(ratio * 100));
+}
+
 function AppShell({
   children,
   theme,
@@ -214,11 +221,11 @@ function VenueStep({
                 <div style={{ width: `${percent}%` }} className={`occupancy-fill ${occupancyClass(venue)}`} />
               </div>
               <div className="mini-chart">
-                {venue.trend.map((value, index) => (
+                {venue.trend.map((_value, index) => (
                   <span
                     key={`${venue.id}-${index}`}
                     className={`mini-bar ${occupancyClass(venue)}`}
-                    style={{ height: `${Math.max(12, value * 5)}px` }}
+                    style={{ height: `${trendHeightPercent(venue.trend, index)}%` }}
                   />
                 ))}
               </div>
@@ -294,11 +301,11 @@ function DetailsStep({ selection }: { selection: SelectionState }) {
           <div style={{ width: `${percent}%` }} className={`occupancy-fill ${occupancyClass(selectedVenue)}`} />
         </div>
         <div className="mini-chart wide">
-          {selectedVenue.trend.map((value, index) => (
+          {selectedVenue.trend.map((_value, index) => (
             <span
               key={`${selectedVenue.id}-detail-${index}`}
               className={`mini-bar ${occupancyClass(selectedVenue)}`}
-              style={{ height: `${Math.max(16, value * 7)}px` }}
+              style={{ height: `${trendHeightPercent(selectedVenue.trend, index)}%` }}
             />
           ))}
         </div>

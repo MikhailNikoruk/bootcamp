@@ -313,12 +313,24 @@ input {
   align-items: end;
   gap: 4px;
   height: 48px;
+  overflow: hidden;
+  border-radius: 8px;
+  padding-top: 4px;
 }
 
 .mini-bar {
   flex: 1;
   border-radius: 4px 4px 0 0;
   opacity: 0.92;
+}
+
+.mini-chart.wide {
+  height: 72px;
+}
+
+.occupancy-line.large {
+  height: 10px;
+  margin-bottom: 0.35rem;
 }
 
 .traffic-legend {
