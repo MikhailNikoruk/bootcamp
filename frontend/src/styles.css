@@ -1,0 +1,266 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500&display=swap");
+
+:root {
+  --radius: 16px;
+  --font-main: "Manrope", sans-serif;
+  --font-accent: "IBM Plex Mono", monospace;
+}
+
+:root[data-theme="light"] {
+  --bg: #f6f7fb;
+  --bg-shade: #e5edf9;
+  --panel: rgba(255, 255, 255, 0.92);
+  --text: #122033;
+  --muted: #5f6b7a;
+  --line: #d5dfec;
+  --accent: #0f7b6c;
+  --accent-contrast: #f4fffb;
+  --danger: #cc3344;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0b141d;
+  --bg-shade: #112434;
+  --panel: rgba(18, 30, 43, 0.92);
+  --text: #f3f8ff;
+  --muted: #b8c4d1;
+  --line: #2f445a;
+  --accent: #5ed0bd;
+  --accent-contrast: #0c1e1a;
+  --danger: #ff7487;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  color: var(--text);
+  background:
+    radial-gradient(circle at 20% -10%, #ffb86c55, transparent 30%),
+    radial-gradient(circle at 100% 10%, #5fd7cd55, transparent 35%),
+    linear-gradient(155deg, var(--bg) 0%, var(--bg-shade) 100%);
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+input,
+select,
+button {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(1220px, calc(100vw - 2rem));
+  margin: 1rem auto 2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.panel {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem;
+  background: var(--panel);
+  backdrop-filter: blur(10px);
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.eyebrow {
+  font-family: var(--font-accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.theme-button {
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+}
+
+.layout-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.panel-full {
+  grid-column: 1 / -1;
+}
+
+.filters-grid,
+.add-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.92rem;
+}
+
+input,
+select {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.6rem 0.7rem;
+  background: transparent;
+  color: var(--text);
+}
+
+button {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  padding: 0.55rem 0.75rem;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.venue-list,
+.bookings-list {
+  margin-top: 0.85rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.venue-card {
+  width: 100%;
+  text-align: left;
+  display: grid;
+  gap: 0.2rem;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+}
+
+.venue-card.active {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.chip {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.venue-meta {
+  margin: 0.8rem 0;
+  display: grid;
+  gap: 0.3rem;
+}
+
+.slots-grid {
+  margin-top: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.slot.disabled {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.booking-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.7rem;
+}
+
+.danger {
+  background: color-mix(in srgb, var(--danger) 22%, transparent);
+  border: 1px solid color-mix(in srgb, var(--danger) 45%, transparent);
+  color: var(--danger);
+}
+
+.feedback {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  max-width: min(90vw, 380px);
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  padding: 0.75rem;
+  color: var(--text);
+}
+
+@media (max-width: 1080px) {
+  .layout-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .panel-full {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 760px) {
+  .app-shell {
+    width: calc(100vw - 1rem);
+    margin: 0.5rem auto 1rem;
+  }
+
+  .topbar {
+    flex-direction: column;
+  }
+
+  .layout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-full {
+    grid-column: auto;
+  }
+
+  .filters-grid,
+  .add-form {
+    grid-template-columns: 1fr;
+  }
+
+  .slots-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .booking-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
