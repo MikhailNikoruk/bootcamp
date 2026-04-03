@@ -3,9 +3,9 @@ import { filterVenuesForStep, formatPercent, getOccupancyLevel } from "./mvp";
 
 describe("mvp utils", () => {
   it("calculates occupancy level", () => {
-    expect(getOccupancyLevel(2, 20)).toBe("low");
-    expect(getOccupancyLevel(8, 20)).toBe("medium");
-    expect(getOccupancyLevel(16, 20)).toBe("high");
+    expect(getOccupancyLevel(6, 20)).toBe("low"); // 30%
+    expect(getOccupancyLevel(12, 20)).toBe("medium"); // 60%
+    expect(getOccupancyLevel(15, 20)).toBe("high"); // 75%
   });
 
   it("filters venues by sport and district", () => {

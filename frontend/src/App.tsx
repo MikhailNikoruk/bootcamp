@@ -32,7 +32,7 @@ function AppShell({
     <div className="app-shell">
       <header className="top-nav">
         <Link to="/" className="brand">
-          SpotFit
+          Radius
         </Link>
         <div className="nav-actions">
           <Link to="/sport" className="nav-link">
@@ -52,10 +52,10 @@ function WelcomePage() {
   return (
     <main className="welcome-page">
       <section className="hero-card">
-        <p className="badge">MVP для городского спорта</p>
+        <p className="badge">Radius MVP</p>
         <h1>Находи живые площадки и оценивай загруженность заранее</h1>
         <p>
-          SpotFit показывает статус площадок по цвету, помогает выбрать спорт и посмотреть
+          Radius показывает статус площадок по цвету, помогает выбрать спорт и посмотреть
           актуальную активность без бронирования.
         </p>
         <div className="hero-cta">
@@ -184,6 +184,11 @@ function VenueStep({
           </select>
         </label>
       </section>
+      <section className="traffic-legend">
+        <span><i className="legend-dot status-low" /> 0-33% пусто</span>
+        <span><i className="legend-dot status-medium" /> 34-66% средняя активность</span>
+        <span><i className="legend-dot status-high" /> 67-100% много людей</span>
+      </section>
 
       <section className="venue-grid">
         {filteredVenues.map((venue) => {
@@ -204,6 +209,7 @@ function VenueStep({
                 </span>
               </div>
               <span className="venue-subtitle">{venue.address}</span>
+              <span className="percent-label">{percent}% загрузки</span>
               <div className="occupancy-line">
                 <div style={{ width: `${percent}%` }} className={`occupancy-fill ${occupancyClass(venue)}`} />
               </div>
@@ -273,6 +279,9 @@ function DetailsStep({ selection }: { selection: SelectionState }) {
         </p>
         <p>
           <strong>Текущая загрузка:</strong> {selectedVenue.occupancyNow}/{selectedVenue.capacity}
+        </p>
+        <p>
+          <strong>Процент загрузки:</strong> {percent}%
         </p>
         <p>
           <strong>Статус:</strong> {getOccupancyLabel(level)}

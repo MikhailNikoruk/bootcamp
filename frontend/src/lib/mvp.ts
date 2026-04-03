@@ -2,18 +2,28 @@ import type { Venue } from "../types";
 
 export type OccupancyLevel = "low" | "medium" | "high";
 
-export function getOccupancyLevel(occupancyNow: number, capacity: number): OccupancyLevel {
-  const ratio = capacity > 0 ? occupancyNow / capacity : 0;
+export function getOccupancyPercent(occupancyNow: number, capacity: number): number {
+  if (capacity <= 0) {
+    return 0;
+  }
 
-  if (ratio < 0.35) {
+  return Math.min(100, Math.round((occupancyNow / capacity) * 100));
+}
+
+export function getOccupancyLevelByPercent(percent: number): OccupancyLevel {
+  if (percent <= 33) {
     return "low";
   }
 
-  if (ratio < 0.7) {
+  if (percent <= 66) {
     return "medium";
   }
 
   return "high";
+}
+
+export function getOccupancyLevel(occupancyNow: number, capacity: number): OccupancyLevel {
+  return getOccupancyLevelByPercent(getOccupancyPercent(occupancyNow, capacity));
 }
 
 export function getOccupancyLabel(level: OccupancyLevel): string {
@@ -41,9 +51,5 @@ export function filterVenuesForStep(
 }
 
 export function formatPercent(occupancyNow: number, capacity: number): number {
-  if (capacity <= 0) {
-    return 0;
-  }
-
-  return Math.min(100, Math.round((occupancyNow / capacity) * 100));
+  return getOccupancyPercent(occupancyNow, capacity);
 }
